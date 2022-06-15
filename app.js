@@ -4,12 +4,10 @@ const FileStore = require('session-file-store')(session);
 const morgan = require('morgan');
 const hbs = require('hbs');
 const path = require('path');
+const cookieParser=require('cookie-parser')
 
-
-// const indexRouter = require('./routers/index');
-// const registrRouter = require('./routers/registr');
-// const entryRouter = require('./routers/entry');
-
+const register = require('./routers/register');
+const {checkSession}=requre('./middlewares/checkAuth') 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 
@@ -31,11 +29,14 @@ app.use(session(sessionConfig));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('dev'));
 app.use(express.json());
-// app.use('/', indexRouter);
-// app.use('/registr', registrRouter);
-// app.use('/entry', entryRouter);
+app.use(cookieParser)
+app.use(checkSession)
 
 const PORT = 3000;
+
+
+app.use('/', registrRouter);
+
 
 app.listen(PORT, () => {
   console.log('vzleteli');
