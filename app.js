@@ -6,8 +6,8 @@ const hbs = require('hbs');
 const path = require('path');
 
 const mainPageRouter = require('./routers/mainPageRouter');
-// const registrRouter = require('./routers/registr');
-// const entryRouter = require('./routers/entry');
+const registrationRouter = require('./routers/registrationRouter');
+const loginRouter = require('./routers/loginRouter');
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -31,8 +31,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('dev'));
 app.use(express.json());
 app.use('/', mainPageRouter);
-// app.use('/registr', registrRouter);
-// app.use('/entry', entryRouter);
+app.use('/registration', registrationRouter);
+app.use('/login', loginRouter);
 
 const PORT = 3000;
 
