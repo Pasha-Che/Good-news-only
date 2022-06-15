@@ -1,0 +1,6 @@
+DB_USERNAME=
+DB_PASSWORD=
+DB_DATABASE=
+
+//ваши данные записываются без кавычек, напрмер:
+//DB_USERNAME=Pasha-Che
