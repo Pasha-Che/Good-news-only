@@ -4,10 +4,15 @@ const express = require('express');
 const morgan = require('morgan');
 const hbs = require('hbs');
 const path = require('path');
+const cookieParser=require('cookie-parser')
 
+
+const register = require('./routers/register');
+const {checkSession}=requre('./middlewares/checkAuth') 
 const mainPageRouter = require('./routers/mainPageRouter');
 // const registrRouter = require('./routers/registr');
 // const entryRouter = require('./routers/entry');
+
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -30,11 +35,20 @@ hbs.registerPartials(path.join(process.env.PWD, 'views', 'partials'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('dev'));
 app.use(express.json());
+
+app.use(cookieParser)
+app.use(checkSession)
+
 app.use('/', mainPageRouter);
 // app.use('/registr', registrRouter);
 // app.use('/entry', entryRouter);
 
+
 const PORT = 3000;
+
+
+app.use('/', registrRouter);
+
 
 app.listen(PORT, () => {
   console.log('vzleteli');
