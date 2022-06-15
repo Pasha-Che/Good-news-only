@@ -1,1 +1,73 @@
-{{>navbar}}
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Good News</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">News</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Bla bla bla</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdownMenuLink"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Dropdown link
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<label for="goodNews" class="form-label">News by word</label>
+<input
+  type="text"
+  name="goodNews"
+  class="form-control"
+  aria-describedby="passwordHelpBlock"
+  style="width: 300px;"
+/>
+<div id="passwordHelpBlock" class="form-text">
+  You can find  some gos news by words
+</div>
+<label for="goodNews" class="form-label">Exception</label>
+<input
+  type="text"
+  name="exceptions"
+  class="form-control"
+  aria-describedby="passwordHelpBlock"
+  style="width: 300px;"
+/>
+<div id="except" class="form-text">
+Exceptions
+</div>
+
+<div  name="mainCarousel" class="my-10"> 
+{{>carouselMainPage}}
+</div>

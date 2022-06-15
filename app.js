@@ -5,7 +5,7 @@ const morgan = require('morgan');
 const hbs = require('hbs');
 const path = require('path');
 
-// const indexRouter = require('./routers/index');
+const mainPageRouter = require('./routers/mainPageRouter');
 // const registrRouter = require('./routers/registr');
 // const entryRouter = require('./routers/entry');
 
@@ -30,7 +30,7 @@ hbs.registerPartials(path.join(process.env.PWD, 'views', 'partials'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('dev'));
 app.use(express.json());
-// app.use('/', indexRouter);
+app.use('/', mainPageRouter);
 // app.use('/registr', registrRouter);
 // app.use('/entry', entryRouter);
 
