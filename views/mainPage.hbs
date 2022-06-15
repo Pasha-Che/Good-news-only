@@ -1,73 +1,49 @@
-<nav class="navbar navbar-expand-lg bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Good News</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNavDropdown"
-      aria-controls="navbarNavDropdown"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">News</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Bla bla bla</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            id="navbarDropdownMenuLink"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Dropdown link
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-      </ul>
+
+<div class="text-bg-success p-3">
+<div class="my-2">
+{{>navbar}}
+</div>
+</div>
+<br>
+
+
+<div class="text-bg-success p-3">
+<div class="my-5">
+    <label for="inputPassword5" class="form-label">Search News</label>
+ <input style="width: 300px;" type="text" class="form-control" id="exception">
+<div id="passwordHelpBlock" class="form-text">
+</div>
+</div>
+</div>
+<br>
+<div class="text-bg-success p-3">
+<div class="my-5">
+    <label for="inputPassword5" class="form-label">Except news</label>
+ <input style="width: 300px;" type="text" class="form-control" id="exception">
+<div id="passwordHelpBlock" class="form-text">
+</div>
+</div>
+</div>
+<br>
+
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="france.jpeg" class="d-block w-50" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="unnamed.jpeg" class="d-block w-50" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="france.jpeg" class="d-block w-50" alt="...">
     </div>
   </div>
-</nav>
-
-<label for="goodNews" class="form-label">News by word</label>
-<input
-  type="text"
-  name="goodNews"
-  class="form-control"
-  aria-describedby="passwordHelpBlock"
-  style="width: 300px;"
-/>
-<div id="passwordHelpBlock" class="form-text">
-  You can find  some gos news by words
-</div>
-<label for="goodNews" class="form-label">Exception</label>
-<input
-  type="text"
-  name="exceptions"
-  class="form-control"
-  aria-describedby="passwordHelpBlock"
-  style="width: 300px;"
-/>
-<div id="except" class="form-text">
-Exceptions
-</div>
-
-<div  name="mainCarousel" class="my-10"> 
-{{>carouselMainPage}}
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
 </div>

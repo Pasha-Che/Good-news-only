@@ -1,3 +1,4 @@
+
 /* eslint-disable quotes */
 const express = require("express");
 const session = require('express-session');
@@ -12,6 +13,7 @@ const { checkSession } = requre("./middlewares/checkAuth");
 const mainPageRouter = require("./routers/mainPageRouter");
 // const registrRouter = require('./routers/registr');
 // const entryRouter = require('./routers/entry');
+
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -48,6 +50,7 @@ app.use(checkSession);
 app.use("/", mainPageRouter);
 // app.use('/registr', registrRouter);
 // app.use('/entry', entryRouter);
+
 
 const PORT = 3000;
 
