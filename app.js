@@ -1,7 +1,7 @@
 /* eslint-disable quotes */
 const express = require("express");
-// const session = require('express-session');
-// const FileStore = require('session-file-store')(session);
+const session = require('express-session');
+const FileStore = require('session-file-store')(session);
 const morgan = require("morgan");
 const hbs = require("hbs");
 const path = require("path");
