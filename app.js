@@ -10,7 +10,7 @@ const cookieParser = require("cookie-parser");
 const { checkSession } = require("./middleware/checkAuth");
 const mainPageRouter = require("./routers/mainPageRouter");
 const loginRouter = require('./routers/loginRouter');
-const registrationRouter = require('./routers/registrationRouter');
+// const registrationRouter = require('./routers/registrationRouter');
 // const registrRouter = require("./routers/register"); Роут отрубил- с ним не взлетаем
 
 const app = express();
@@ -37,7 +37,7 @@ app.use(express.json());
 
 app.use("/", mainPageRouter);
 app.use('/login', loginRouter);
-app.use('/registration', registrationRouter);
+// app.use('/registration', registrationRouter);
 // app.use("/", registrRouter); роут отрубил  с ним не взлетаем
 
 app.use(cookieParser);
