@@ -35,7 +35,6 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(morgan("dev"));
 app.use(express.json());
 
-<<<<<<< HEAD
 app.use("/", mainPageRouter);
 app.use('/login', loginRouter);
 app.use('/registration', registrationRouter);
@@ -43,12 +42,6 @@ app.use('/registration', registrationRouter);
 
 app.use(cookieParser);
 app.use(checkSession);
-=======
-// app.use(cookieParser);
-app.use(checkSession);
-app.use("/", mainPageRouter);
-app.use('/register', registerRouter);
->>>>>>> 12898de040fa243ddf8fa273bb460938eac42d4c
 
 const PORT = 3000;
 // app.use("/", mainPageRouter);
@@ -56,12 +49,6 @@ const PORT = 3000;
 // app.use('/registration', registrationRouter);
 // app.use("/", registrRouter);
 
-<<<<<<< HEAD
-=======
-app.use(cookieParser);
-app.use(checkSession);
-git 
->>>>>>> 12898de040fa243ddf8fa273bb460938eac42d4c
 app.listen(PORT, () => {
   console.log("vzleteli");
 });
