@@ -8,10 +8,11 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 
 const register = require("./routers/register");
-const { checkSession } = requre("./middlewares/checkAuth");
+const { checkSession } = require("./middlewares/checkAuth");
 const mainPageRouter = require("./routers/mainPageRouter");
 // const registrRouter = require('./routers/registr');
 // const entryRouter = require('./routers/entry');
+const entriesRouter = require('./routers/entriesRouter');
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -48,6 +49,7 @@ app.use(checkSession);
 app.use("/", mainPageRouter);
 // app.use('/registr', registrRouter);
 // app.use('/entry', entryRouter);
+app.use('/entries', entriesRouter);
 
 const PORT = 3000;
 
