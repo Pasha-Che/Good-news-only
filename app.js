@@ -1,4 +1,3 @@
-
 /* eslint-disable quotes */
 const express = require("express");
 const session = require('express-session');
@@ -22,20 +21,21 @@ app.set("views", path.join(__dirname, "views"));
 
 hbs.registerPartials(path.join(process.env.PWD, "views", "partials"));
 
-// const sessionConfig = {
-//   store: new FileStore(),
-//   key: 'sid',
-//   secret: 'secret',
-//   resave: false,
-//   saveUninitialized: false,
-//   httpOnly: true,
-//   cookie: { expires: 24 * 60 * 60e3 },
-// };
-// app.use(session(sessionConfig));
+const sessionConfig = {
+  store: new FileStore(),
+  key: 'sid',
+  secret: 'secret',
+  resave: false,
+  saveUninitialized: false,
+  httpOnly: true,
+  cookie: { expires: 24 * 60 * 60e3 },
+};
+app.use(session(sessionConfig));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(morgan("dev"));
 app.use(express.json());
 
+<<<<<<< HEAD
 app.use("/", mainPageRouter);
 app.use('/login', loginRouter);
 app.use('/registration', registrationRouter);
@@ -43,9 +43,25 @@ app.use('/registration', registrationRouter);
 
 app.use(cookieParser);
 app.use(checkSession);
+=======
+// app.use(cookieParser);
+app.use(checkSession);
+app.use("/", mainPageRouter);
+app.use('/register', registerRouter);
+>>>>>>> 12898de040fa243ddf8fa273bb460938eac42d4c
 
 const PORT = 3000;
+// app.use("/", mainPageRouter);
+// app.use('/login', loginRouter);
+// app.use('/registration', registrationRouter);
+// app.use("/", registrRouter);
 
+<<<<<<< HEAD
+=======
+app.use(cookieParser);
+app.use(checkSession);
+git 
+>>>>>>> 12898de040fa243ddf8fa273bb460938eac42d4c
 app.listen(PORT, () => {
   console.log("vzleteli");
 });
