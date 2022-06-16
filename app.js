@@ -45,7 +45,7 @@ app.use(checkSession);
 // app.use(cookieParser);
 app.use(checkSession);
 
-const PORT = 3000;
+const PORT = 3002;
 // app.use("/", mainPageRouter);
 // app.use('/login', loginRouter);
 // app.use('/registration', registrationRouter);
