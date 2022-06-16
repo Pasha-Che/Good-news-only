@@ -38,3 +38,17 @@
 <div class="news"></div>
 
 <script src="js/application.js"></script>
+      {{#each entries}}
+<div class="my-5">
+    <div class="card">
+  <div class="card-header">
+    Хорошая новость
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{this.title}}</h5>
+    <p class="card-text">{{this.description}}</p>
+    <a href="/news/{{this.link}}" class="btn btn-primary">Подробнее</a>
+  </div>
+</div>
+</div>
+      {{/each}}
