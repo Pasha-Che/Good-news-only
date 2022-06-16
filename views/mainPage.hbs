@@ -1,74 +1,72 @@
-<nav class="navbar navbar-expand-lg bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Good News</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNavDropdown"
-      aria-controls="navbarNavDropdown"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">News</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Bla bla bla</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            id="navbarDropdownMenuLink"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Dropdown link
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
+
+
+<div class="text-bg-success p-3">
+<div class="my-2">
+{{>navbar}}
+</div>
+</div>
+<br>
+
+
+
+
+<div class="text-bg-success p-3">
+<div class="my-3">
+    <label for="search" class="form-label">Search News</label>
+ <input  type="text" class="form-control" id="searching">
+<div id="searchNews" class="form-text">
+<div class="d-inline-flex p-2">
+  <button type="submit" class="btn btn-dark">Search</button>
+</div>
+<div class="my-3">
+    <label for="except" class="form-label">  Except News</label>
+ <input  type="text" class="form-control" id="exception">
+<div id="exceptionButton" class="form-text">
+<div class="d-inline-flex p-2">
+  <button type="submit" class="btn btn-dark">Exclude</button>
+</div>
+</div>
+
+
+
+<div class="d-flex justify-content-center">
+<p class="h3">Some text</p>
+</div>
+
+<div class="my-5">
+    <div class="card">
+  <div class="card-header">
+    Featured
   </div>
-</nav>
-
-<label for="goodNews" class="form-label">News by word</label>
-<input
-  type="text"
-  name="goodNews"
-  class="form-control"
-  aria-describedby="passwordHelpBlock"
-  style="width: 300px;"
-/>
-<div id="passwordHelpBlock" class="form-text">
-  You can find  some gos news by words
+  <div class="card-body">
+    <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
 </div>
-<label for="goodNews" class="form-label">Exception</label>
-<input
-  type="text"
-  name="exceptions"
-  class="form-control"
-  aria-describedby="passwordHelpBlock"
-  style="width: 300px;"
-/>
-<div id="except" class="form-text">
-Exceptions
 </div>
-
-<div  name="mainCarousel" class="my-10"> 
-{{>carouselMainPage}}
+<div class="my-5">
+    <div class="card">
+  <div class="card-header">
+    Featured
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+</div>
+<div class="my-5">
+    <div class="card">
+  <div class="card-header">
+    Featured
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
 </div>
 
