@@ -1,17 +1,16 @@
-checkAuth = (req, res, next) => {
+const checkAuth = (req, res, next) => {
   if (req.session.userId) {
-    return res.redirect('/')
+    return res.redirect('/');
   }
-  return next()
-}
-
+  return next();
+};
 
 const checkSession = (req, res, next) => {
   if (req.session.userId) {
-    res.locals.userId = req.session.userId
-    return next()
+    res.locals.userId = req.session.userId;
+    return next();
   }
-  next()
-}
+  next();
+};
 
-module.exports = { checkAuth, checkSession }
+module.exports = { checkAuth, checkSession };
