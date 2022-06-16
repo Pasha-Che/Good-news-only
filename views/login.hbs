@@ -3,21 +3,29 @@
 {{>navbar}}
 </div>
 <br>
+
+
+
+<div class="text-wrap" style="width: 23rem;">
+<form method="POST" action="/registr" name="registration">
 <div class="text-bg-success p-3">
-<form method="POST" action="/entry" >
   <div class="my-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input style="width: 300px;" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <label for="email" class="form-label">Email address</label>
+    <input name="email" style="width: 300px;" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
   </div>
-<br>
-  <div class="text-bg-success p-3">
-<div class="my-5">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input style="width: 300px;" type="password" class="form-control" id="exampleInputPassword1">
+   <div class="my-2">
+    <label for="password" class="form-label"> Password</label>
+    <input name="password" style="width: 300px;" type="password" class="form-control" id="exampleInputPassword1">
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <div class="my-2">
+  <button type="submit" class="btn btn-dark">Log in</button>
+  </div>
 </form>
-  </div>  
 </div>
+</div>
+
+ 
+
+
 
