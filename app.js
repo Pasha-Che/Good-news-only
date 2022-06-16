@@ -1,6 +1,5 @@
 /* eslint-disable quotes */
 const express = require("express");
-
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 const morgan = require("morgan");
@@ -11,6 +10,12 @@ const cookieParser = require("cookie-parser");
 const { checkSession } = require("./middleware/checkAuth");
 const mainPageRouter = require("./routers/mainPageRouter");
 const registerRouter = require('./routers/registerRouter');
+
+// const registrRouter = require("./routers/register");
+// const { checkSession } = requre("./middlewares/checkAuth");
+// const mainPageRouter = require("./routers/mainPageRouter");
+// const loginRouter = require('./routers/loginRouter');
+// const registrationRouter = require('./routers/registrationRouter');
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -38,10 +43,16 @@ app.use(express.json());
 app.use(checkSession);
 app.use("/", mainPageRouter);
 app.use('/register', registerRouter);
-// app.use('/entry', entryRouter);
 
-const PORT = 3002;
+const PORT = 3000;
+// app.use("/", mainPageRouter);
+// app.use('/login', loginRouter);
+// app.use('/registration', registrationRouter);
+// app.use("/", registrRouter);
 
+app.use(cookieParser);
+app.use(checkSession);
+git 
 app.listen(PORT, () => {
   console.log("vzleteli");
 });
