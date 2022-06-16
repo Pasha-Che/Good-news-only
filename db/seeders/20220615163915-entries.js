@@ -1,7 +1,7 @@
 const path = require("path");
 require("dotenv").config();
 
-const someEntries = require(path.join(process.env.PWD, "entriesSeed.js"));
+const someEntries = require(path.join(process.env.PWD, "/controller/entries.controller.js"));
 
 module.exports = {
   async up(queryInterface, Sequelize) {
