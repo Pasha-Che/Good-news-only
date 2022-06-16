@@ -1,15 +1,15 @@
-const axios = require("axios");
+const axios = require('axios');
 
 const someEntries = async () => {
   const acc = [];
   for (let i = 1; i < 2; i++) {
     const options = {
-      method: "GET",
-      url: "https://newsdata2.p.rapidapi.com/news",
-      params: { language: "ru", page: `${i}` },
+      method: 'GET',
+      url: 'https://newsdata2.p.rapidapi.com/news',
+      params: { language: 'ru', page: `${i}` },
       headers: {
-        "X-RapidAPI-Key": "d8fd385eb6mshd5b8e8941a2bc20p19705ejsnea229c5650e7",
-        "X-RapidAPI-Host": "newsdata2.p.rapidapi.com",
+        'X-RapidAPI-Key': 'd8fd385eb6mshd5b8e8941a2bc20p19705ejsnea229c5650e7',
+        'X-RapidAPI-Host': 'newsdata2.p.rapidapi.com',
       },
     };
 
@@ -28,7 +28,7 @@ const someEntries = async () => {
     };
   });
 
- return result;
+  return result;
 };
 
 someEntries();
