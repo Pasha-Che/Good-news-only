@@ -1,11 +1,15 @@
 const express = require('express');
 const { Op } = require('sequelize');
+
 const { Entries, Bwords, Gwords } = require('../db/models');
+const { checkSession } = require("../middleware/checkAuth");
+
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.render('mainPage');
+router.get('/', checkSession, (req, res) => {
+  console.log(res.locals);
+  res.render('mainPage', { userId: res.locals.userId });
 });
 
 router.get('/goodWords', async (req, res) => {

@@ -1,19 +1,20 @@
 const express = require('express');
 
+const { checkSession } = require("../middleware/checkAuth");
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const { Users } = require('../db/models');
 
-router.get('/registration', async (req, res) => {
+router.get('/registration', checkSession, async (req, res) => {
   res.render('register');
 });
-router.post('/registration', async (req, res) => {
+router.post('/registration', checkSession, async (req, res) => {
   try {
     const { email, name, password } = req.body;
     if (email && name && password) {
       const hashPass = await bcrypt.hash(password, Number(process.env.SALTROUNDS));
-      await Users.create({ email, name, password: hashPass });
-      req.session.userId = 1;
+      const newUser = await Users.create({ email, name, password: hashPass });
+      req.session.userId = newUser.id;
       res.redirect('/');
     }
   } catch (err) {
@@ -37,6 +38,7 @@ router.post('/login', async (req, res) => {
       const passCheck = await bcrypt.compare(password, user.password);
       if (user && passCheck) {
         req.session.userId = user.id;
+        req.session.userName = user.name;
         res.redirect('/');
       } else { res.redirect('/login'); }
     }

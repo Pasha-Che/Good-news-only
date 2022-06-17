@@ -1,10 +1,15 @@
 const form = document.forms.search;
+const { login } = document.forms;
+console.log(login);
+
 const news = document.querySelector('.news');
 const searchInput = document.getElementById('searching');
+
 const tags = document.getElementById('goodWordsContainer');
 
-console.log(searchInput);
-form.addEventListener('submit', async (e) => {
+
+form?.addEventListener('submit', async (e) => {
+
   e.preventDefault();
 
   const data = Object.fromEntries(new FormData(e.target));
@@ -19,9 +24,10 @@ form.addEventListener('submit', async (e) => {
   if (response.ok) {
     // window.location = '/';
     const res = await response.json();
-    console.log(res);
-    const arrNews = res.entries
-      .map(
+
+//     const arrNews = res.entries
+
+    const arrNews = res.map(
         (el) => `<div class="my-5">
     <div class="card">
   <div class="card-body">
@@ -41,6 +47,7 @@ form.addEventListener('submit', async (e) => {
   }
 });
 
+
 (() => {
   fetch('/goodWords')
     .then((res) => res.json())
@@ -55,3 +62,24 @@ form.addEventListener('submit', async (e) => {
       tags.insertAdjacentHTML('beforebegin', str);
     });
 })();
+
+login?.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const loginData = Object.fromEntries(new FormData(login));
+  console.log(loginData);
+  if (loginData.loginEmail.trim() && loginData.loginPassword.trim()) {
+    const resp = await fetch('/login', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(loginData),
+    });
+    if (resp.ok) {
+      window.location = '/';
+    } else {
+      alert('Вы ввели неверные данные!');
+    }
+  }
+});
+
