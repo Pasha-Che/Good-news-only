@@ -9,7 +9,7 @@
 
 
 
-<form method="post" action="/mainPage" name="search">
+<form name="search">
 <div class="text-bg-success p-3">
 <div class="my-3">
     <label  for="search" class="form-label">Search News</label>
@@ -28,8 +28,13 @@
 </div>
 </form>
 
-
-
+<div id="goodWordsContainer">
+        {{#each goodWords}}
+<div class="d-grid gap-2 d-md-block">
+  <button class="btn btn-primary" type="button">{{this.goodWord}}</button>
+</div>
+      {{/each}}
+</div>
 
 
 <div class="news"></div>

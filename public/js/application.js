@@ -1,6 +1,8 @@
 const form = document.forms.search;
 const news = document.querySelector('.news');
 const searchInput = document.getElementById('searching');
+const tags = document.getElementById('goodWordsContainer');
+
 console.log(searchInput);
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -17,7 +19,10 @@ form.addEventListener('submit', async (e) => {
   if (response.ok) {
     // window.location = '/';
     const res = await response.json();
-    const arrNews = res.map(el => `<div class="my-5">
+    console.log(res);
+    const arrNews = res.entries
+      .map(
+        (el) => `<div class="my-5">
     <div class="card">
   <div class="card-body">
     <h5 class="card-title">${el.title}</h5>
@@ -25,20 +30,28 @@ form.addEventListener('submit', async (e) => {
     <a href=${el.link} class="btn btn-primary">Подробнее</a>
   </div>
 </div>
-</div>`).join(' ');
+</div>`
+      )
+      .join(' ');
     // console.log(res);
     news.innerHTML = '';
+    console.log(res.newWord);
     news.insertAdjacentHTML('afterbegin', arrNews);
     console.log(res);
   }
 });
 
-{/* <div class="my-5">
-    <div class="card">
-  <div class="card-body">
-    <h5 class="card-title">${this.title}</h5>
-    <p class="card-text">${this.description}</p>
-    <a href=${this.link} class="btn btn-primary">Подробнее</a>
-  </div>
-</div>
-</div> */}
+(() => {
+  fetch('/goodWords')
+    .then((res) => res.json())
+    .then((res) => {
+      console.log(res);
+      const str = res.goodWords.map((el) => {
+          return `<div class="d-grid gap-2 d-md-block">
+      <button class="btn btn-primary" type="button">${el.goodword}</button>
+    </div>`;
+        })
+        .join('');
+      tags.insertAdjacentHTML('beforebegin', str);
+    });
+})();

@@ -12,7 +12,6 @@ const someEntries = async () => {
         'X-RapidAPI-Host': 'newsdata2.p.rapidapi.com',
       },
     };
-
     const res = await axios.request(options);
     const data = res.data;
 
