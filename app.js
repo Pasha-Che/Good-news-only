@@ -11,7 +11,7 @@ const { checkSession } = require("./middleware/checkAuth");
 const mainPageRouter = require("./routers/mainPageRouter");
 const loginRouter = require("./routers/loginRouter");
 const registrRouter = require("./routers/register");
-const searchRouter = require('./routers/searchRouter');
+const logOutRouter = require('./routers/logoutRouter');
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -22,6 +22,7 @@ app.set("views", path.join(__dirname, "views"));
 hbs.registerPartials(path.join(process.env.PWD, "views", "partials"));
 
 const sessionConfig = {
+  name: 'auth',
   store: new FileStore(),
   key: "sid",
   secret: "secret",
@@ -37,7 +38,7 @@ app.use(express.json());
 
 app.use("/", mainPageRouter);
 app.use("/login", loginRouter);
-app.use('/search', searchRouter);
+app.use('/', logOutRouter);
 app.use("/registration", registrRouter);
 
 app.use(cookieParser);

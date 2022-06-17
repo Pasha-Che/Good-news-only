@@ -1,35 +1,36 @@
-const router = require("express").Router();
-const bcrypt = require("bcrypt");
-const { Users } = require("../db/models");
+/* eslint-disable semi */
+const router = require('express').Router();
+const bcrypt = require('bcrypt');
+const { Users } = require('../db/models');
 
-router.get("/", async (req, res) => {
-  res.render("registration");
+router.get('/', async (req, res) => {
+  res.render('registration');
 });
-router.post("/", async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const { email, name, password } = req.body;
     console.log(email, name, password);
     if (email && name && password) {
       const hashPass = await bcrypt.hash(
         password,
-        Number(process.env.SALTROUNDS)
+        Number(process.env.SALTROUNDS),
       );
       await Users.create({ email, name, password: hashPass });
-      res.redirect("/");
+      res.redirect('/');
     } else {
       res.redirect('error')
     }
   } catch (err) {
     console.log(err);
-    res.redirect("/registration");
+    res.redirect('/registration');
   }
 });
 
-router.get("/login", async (req, res) => {
-  res.render("login");
+router.get('/login', async (req, res) => {
+  res.render('login');
 });
 
-router.post("/login", async (req, res) => {
+router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
     if (email && password) {
@@ -39,24 +40,24 @@ router.post("/login", async (req, res) => {
       const passCheck = await bcrypt.compare(password, user.password);
       if (user && passCheck) {
         req.session.userId = user.id;
-        res.redirect("/");
+        res.redirect('/');
       } else {
-        res.redirect("/login");
+        res.redirect('/login');
       }
     }
   } catch (err) {
     console.log(err);
-    res.redirect("/login");
+    res.redirect('/login');
   }
 });
 
-router.get("/logout", (req, res) => {
+router.get('/logout', (req, res) => {
   req.session.destroy((error) => {
     if (error) {
       console.error(error);
       return res.sendStatus(500);
     }
-    res.clearCookie("auth").redirect("/");
+    res.clearCookie('auth').redirect('/');
   });
 });
 
