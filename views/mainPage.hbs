@@ -1,29 +1,27 @@
 
 
-<div class="text-bg-success p-3">
+<div class="text-bg-success logo p-14">
 <div class="my-2">
 {{>navbar}}
 </div>
 </div>
 <br>
 
-
-
 <form method="post" action="/mainPage" name="search">
 <div class="text-bg-success p-3">
 <div class="my-3">
-    <label  for="search" class="form-label">Search News</label>
+    <label  for="search" class="form-label">Найти новости</label>
  <input name="gwords" type="text" class="form-control" id="searching">
 <div id="searchNews" class="form-text">
-<div class="d-inline-flex p-2">
-  <button type="submit" class="btn btn-dark">Search</button>
+<div class="d-inline-flex  p-2">
+ 
 </div>
 <div class="my-3">
-    <label for="except" class="form-label">  Except News</label>
+    <label for="except" class="form-label">Искючение</label>
  <input name="bwords" type="text" class="form-control" id="exception">
 <div id="exceptionButton" class="form-text">
 <div class="d-inline-flex p-2">
-  <button type="submit" class="btn btn-dark">Exclude</button>
+  <button type="submit" class="btn btn-dark">Поиск</button>
 </div>
 </div>
 </form>

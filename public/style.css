@@ -1,4 +1,36 @@
-body{
+body {
   background-image: url("images.jpeg");
   background-color: yellow;
+}
+
+.navbar-brand {
+  font-size: 29px;
+  color: bisque;
+}
+
+.nav-link.active{
+  text-decoration: none;
+
+  margin-right: 29px;
+}
+.nav-link {
+  font-size: 19px;
+  color: bisque;
+  text-decoration:underline #f9ddf9 ;
+}
+.nav-link.exit{
+
+  margin-bottom: 24px;
+}
+
+.btn.btn-dark {
+  color: chartreuse;
+}
+.form-label{
+  color:aliceblue;
+}
+
+
+.text-wrap{
+  margin-left: 729px;
 }
