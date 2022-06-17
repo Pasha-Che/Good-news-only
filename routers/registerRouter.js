@@ -38,6 +38,7 @@ router.post('/login', async (req, res) => {
       const passCheck = await bcrypt.compare(password, user.password);
       if (user && passCheck) {
         req.session.userId = user.id;
+        req.session.userName = user.name;
         res.redirect('/');
       } else { res.redirect('/login'); }
     }

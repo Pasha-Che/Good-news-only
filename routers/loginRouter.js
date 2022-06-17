@@ -19,6 +19,7 @@ router.post('/', checkSession, async (req, res) => {
   const passChek = await bcrypt.compare(loginPassword, user.password);
   if (passChek) {
     req.session.userId = user.id;
+    req.session.userName = user.name;
     return res.sendStatus(200);
   } else {
       res.sendStatus(404)
