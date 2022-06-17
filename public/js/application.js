@@ -7,9 +7,7 @@ const searchInput = document.getElementById('searching');
 
 const tags = document.getElementById('goodWordsContainer');
 
-
 form?.addEventListener('submit', async (e) => {
-
   e.preventDefault();
 
   const data = Object.fromEntries(new FormData(e.target));
@@ -25,10 +23,10 @@ form?.addEventListener('submit', async (e) => {
     // window.location = '/';
     const res = await response.json();
 
-//     const arrNews = res.entries
+    // const arrNews = res.entriesж
 
-    const arrNews = res.map(
-        (el) => `<div class="my-5">
+    const arrNews = res.entries.map(
+      (el) => `<div class="my-5">
     <div class="card">
   <div class="card-body">
     <h5 class="card-title">${el.title}</h5>
@@ -37,7 +35,7 @@ form?.addEventListener('submit', async (e) => {
   </div>
 </div>
 </div>`
-      )
+    )
       .join(' ');
     // console.log(res);
     news.innerHTML = '';
@@ -54,12 +52,12 @@ form?.addEventListener('submit', async (e) => {
     .then((res) => {
       console.log(res);
       const str = res.goodWords.map((el) => {
-          return `<div class="d-grid gap-2 d-md-block">
+      return `<div class="d-grid gap-2 d-md-block">
       <button class="btn btn-primary" type="button">${el.goodword}</button>
-    </div>`;
-        })
+      </div>`;
+      })
         .join('');
-      tags.insertAdjacentHTML('beforebegin', str);
+      tags?.insertAdjacentHTML('afterbegin', str);
     });
 })();
 
