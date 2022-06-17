@@ -1,13 +1,20 @@
 const express = require('express');
 const { Op } = require('sequelize');
-const { Entries } = require('../db/models');
+
+const { Entries, Bwords, Gwords } = require('../db/models');
 const { checkSession } = require("../middleware/checkAuth");
+
 
 const router = express.Router();
 
 router.get('/', checkSession, (req, res) => {
   console.log(res.locals);
   res.render('mainPage', { userId: res.locals.userId });
+});
+
+router.get('/goodWords', async (req, res) => {
+  const goodWords = await Gwords.findAll({ limit: 9 });
+  res.json({goodWords});
 });
 
 // router.get('/', async (req, res) => {
@@ -19,16 +26,27 @@ router.get('/', checkSession, (req, res) => {
 router.route('/').post(async (req, res) => {
   if (!req.body.bwords) {
     req.body.bwords = 'fghjkl';
-};
-console.log(req.body.gwords.split(' ').map(el => `%${el}%`));
+  }
   try {
-    const entries = await Entries.findAll({ where: {
-      description: {
-        [Op.iLike]: { [Op.any]: req.body.gwords.split(' ').map(el => `%${el}%`) },
-        [Op.notILike]: `%${req.body.bwords}%`,
-      }
-    }});
-    res.json(entries);
+    const entries = await Entries.findAll({
+      where: {
+        description: {
+          [Op.iLike]: {
+            [Op.any]: req.body.gwords.split(' ').map((el) => `%${el}%`),
+          },
+          [Op.notILike]: `%${req.body.bwords}%`,
+        },
+      },
+    });
+
+    const newGword = await Gwords.create({
+      goodword: req.body.gwords,
+      user_id: req.session.userId || 1,
+    });
+
+
+
+    res.json({ entries, newGword });
   } catch (error) {
     console.log(error);
   }

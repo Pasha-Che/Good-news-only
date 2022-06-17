@@ -4,8 +4,12 @@ console.log(login);
 
 const news = document.querySelector('.news');
 const searchInput = document.getElementById('searching');
-console.log(searchInput, form);
+
+const tags = document.getElementById('goodWordsContainer');
+
+
 form?.addEventListener('submit', async (e) => {
+
   e.preventDefault();
 
   const data = Object.fromEntries(new FormData(e.target));
@@ -20,8 +24,10 @@ form?.addEventListener('submit', async (e) => {
   if (response.ok) {
     // window.location = '/';
     const res = await response.json();
-    const arrNews = res
-      .map(
+
+//     const arrNews = res.entries
+
+    const arrNews = res.map(
         (el) => `<div class="my-5">
     <div class="card">
   <div class="card-body">
@@ -35,10 +41,27 @@ form?.addEventListener('submit', async (e) => {
       .join(' ');
     // console.log(res);
     news.innerHTML = '';
+    console.log(res.newWord);
     news.insertAdjacentHTML('afterbegin', arrNews);
     console.log(res);
   }
 });
+
+
+(() => {
+  fetch('/goodWords')
+    .then((res) => res.json())
+    .then((res) => {
+      console.log(res);
+      const str = res.goodWords.map((el) => {
+          return `<div class="d-grid gap-2 d-md-block">
+      <button class="btn btn-primary" type="button">${el.goodword}</button>
+    </div>`;
+        })
+        .join('');
+      tags.insertAdjacentHTML('beforebegin', str);
+    });
+})();
 
 login?.addEventListener('submit', async (event) => {
   event.preventDefault();
@@ -59,3 +82,4 @@ login?.addEventListener('submit', async (event) => {
     }
   }
 });
+
